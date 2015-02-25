@@ -1,0 +1,137 @@
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
+
+
+//vector<vector<double>> raw_data(5,vector<double>(3));
+double **raw_data = new double[5][3]
+double* display_data;
+
+MainWindow::MainWindow(QWidget *parent) :
+    QMainWindow(parent),
+    ui(new Ui::MainWindow)
+{
+    ui->setupUi(this);
+
+    foreach (const QSerialPortInfo &info, QSerialPortInfo::availablePorts()) {
+            list.append(info.portName());
+    }
+    ui->comboBoxIMU->addItems(list);
+    ui->comboBoxIMU_2->addItems(list);
+    ui->comboBoxIMU_3->addItems(list);
+    ui->comboBoxIMU_4->addItems(list);
+
+    ui->comboBoxIMU->setCurrentIndex(3);
+    ui->comboBoxIMU_2->setCurrentIndex(1);
+    ui->comboBoxIMU_3->setCurrentIndex(4);
+    ui->comboBoxIMU_4->setCurrentIndex(8);
+
+    timer_ = new QTimer(this);
+    timer_->stop();
+    timer_->setInterval(20);
+    QObject::connect(timer_, SIGNAL(timeout()), this, SLOT(updateView()));
+}
+
+MainWindow::~MainWindow()
+{
+    //     Removes the initialized sensor
+    manager->removeSensor(lpms_back);
+    // Deletes LpmsSensorManager object
+    delete manager;
+    mpu9150_left_thigh->close();
+    mpu9150_left_shank->close();
+    mpu9150_right_thigh->close();
+    mpu9150_right_shank->close();
+    delete ui;
+}
+void MainWindow::updateView()
+{
+
+
+//        mpu9150_left_shank->getAngle(&raw_data[0][0], &raw_data.at(0).at(1), &raw_data.at(0).at(2));
+//        mpu9150_left_thigh->getAngle(&Roll_Ankle1, &Yaw_Ankle, &Pitch_Ankle);
+//        mpu9150_right_shank->getAngle(&Roll_Ankle4, &Yaw_Ankle, &Pitch_Ankle);
+//        mpu9150_right_thigh->getAngle(&Roll_Ankle3, &Yaw_Ankle, &Pitch_Ankle);
+
+
+
+
+
+//        display_data;
+////        if(Roll_Ankle<0)
+////            Roll_Ankle += 360;
+////        if(Yaw_Ankle<0)
+////            Yaw_Ankle += 360;
+////        if(Pitch_Ankle<0)
+////            Pitch_Ankle += 360;
+///
+///
+//        ////     // Checks, if conncted
+//             if (lpms_back->getConnectionStatus() == SENSOR_CONNECTION_CONNECTED) {
+
+//                 // Reads quaternion data
+//                 d = lpms_back->getCurrentData();
+//                 ui->Dial->setValue(d.r[0]+180.0);
+//                 cout<<"getData"<<endl;
+//                 // Shows data
+//        //         printf("qX=%f, qY=%f, qZ=%f\n", d.r[0]+180.0, d.r[1]+180.0, d.r[2]+180.0);
+//                 Roll_Ankle5 = d.r[0]+180.0;
+//             }
+//        std::cout<<Roll_Ankle1<<", "<<Roll_Ankle2<<", "<<Roll_Ankle3<<", "<<Roll_Ankle4<<", "<<Roll_Ankle5<<std::endl;
+
+////            std::cout<<"asdfasdf"<<std::endl;
+
+
+//        ui->Dial->setNeedle(new QwtDialSimpleNeedle( QwtDialSimpleNeedle::Arrow ,true , Qt::red ));
+//        ui->Dial->setValue(Roll_Ankle);
+//        ui->Dial_2->setNeedle(new QwtDialSimpleNeedle( QwtDialSimpleNeedle::Arrow ,true , Qt::red ));
+//        ui->Dial_2->setValue(Yaw_Ankle);
+//        ui->Dial_3->setNeedle(new QwtDialSimpleNeedle( QwtDialSimpleNeedle::Arrow ,true , Qt::red ));
+//        ui->Dial_3->setValue(Pitch_Ankle);
+
+
+
+
+}
+void MainWindow::on_deviceConnect_clicked()
+{
+    // Gets a LpmsSensorManager instance
+    manager = LpmsSensorManagerFactory();
+    cout<<"LpmsSensorManagerFactory"<<endl;
+    // Connects to LPMS-B sensor with address 00:11:22:33:44:55
+    lpms_back = manager->addSensor(DEVICE_LPMS_B, "00:06:66:4B:24:F2");
+    cout<<"addSensor"<<endl;
+    lpms_back->getConnectionStatus();
+
+
+    mpu9150_left_thigh = new MPU_9150();
+    bool b_lh  = mpu9150_left_thigh->open(ui->comboBoxIMU->currentText().remove("COM").toInt(), "MPU9150-1.dll");
+    ui->textBrowser->append("CurrentIndex : " + QString::number(ui->comboBoxIMU->currentIndex()));
+
+    mpu9150_left_shank = new MPU_9150();
+    bool b_lk  =mpu9150_left_shank->open(ui->comboBoxIMU_2->currentText().remove("COM").toInt(), "MPU9150-2.dll");
+    ui->textBrowser->append("CurrentIndex : " + QString::number(ui->comboBoxIMU_2->currentIndex()));
+
+    mpu9150_right_thigh = new MPU_9150();
+    bool b_rh  =mpu9150_right_thigh->open(ui->comboBoxIMU_3->currentText().remove("COM").toInt(), "MPU9150-3.dll");
+    ui->textBrowser->append("CurrentIndex : " + QString::number(ui->comboBoxIMU_3->currentIndex()));
+
+    mpu9150_right_shank = new MPU_9150();
+    bool b_rk  =mpu9150_right_shank->open(ui->comboBoxIMU_4->currentText().remove("COM").toInt(), "MPU9150-4.dll");
+    ui->textBrowser->append("CurrentIndex : " + QString::number(ui->comboBoxIMU_4->currentIndex()));
+
+    QString qs_tmp;
+    qs_tmp = "Left thigh = ";qs_tmp.append(!b_lh? "OK":"Fail");
+    ui->textBrowser->append(qs_tmp);qs_tmp.clear();
+    qs_tmp = "Left shank = ";qs_tmp.append(!b_lk? "OK":"Fail");
+    ui->textBrowser->append(qs_tmp);qs_tmp.clear();
+    qs_tmp = "Right thigh = ";qs_tmp.append(!b_rh? "OK":"Fail");
+    ui->textBrowser->append(qs_tmp);qs_tmp.clear();
+    qs_tmp = "Right thigh = ";qs_tmp.append(!b_rk? "OK":"Fail");
+    ui->textBrowser->append(qs_tmp);qs_tmp.clear();
+
+    if(!b_lh && !b_lk && !b_rh && !b_rk){
+        cout<<"ALL device OK"<<endl;
+         ui->textBrowser->append("ALL device OK");
+        timer_->start();
+    }
+}
