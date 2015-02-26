@@ -2,8 +2,6 @@
 #include "ui_mainwindow.h"
 
 
-
-
 //#define TEST
 //vector<double> data_buffer[15];
 //double **data_buffer = new double[5][3];
@@ -65,6 +63,7 @@ MainWindow::MainWindow(QWidget *parent) :
 //    timer_file->setInterval(10);
 
     QObject::connect(timer_, SIGNAL(timeout()), this, SLOT(updateView()));
+    QObject::connect(timer_, SIGNAL(timeout()), this, SLOT(insertToTXT_Thread()));
 //    QObject::connect(timer_file, SIGNAL(timeout()), this, SLOT(insertToTXT()));
 }
 
@@ -249,6 +248,17 @@ void MainWindow::on_pushButton_deviceConnect_clicked()
 
 #endif
 }
+
+void MainWindow::insertToTXT_Thread()
+{
+    QFuture<void> future = QtConcurrent::run(this, &MainWindow::insertToTXT);
+    future.waitForFinished();
+
+
+
+
+}
+
 void MainWindow::insertToTXT()
 {
     if(b_saving_file)
@@ -285,12 +295,14 @@ void MainWindow::on_pushButton_newFile_clicked()
     QTime time = QTime::currentTime();
     QString timeString = locale.toString(time, "hhmmss");
     QString username = ui->lineEdit_username->text();
-    QString filepath = "./Data/"+ username + "_" + dateString + "_" + timeString +".txt";
+    QString filepath = "./DataXX/"+ username + "_" + dateString + "_" + timeString +".txt";
     ui->textBrowser->append(filepath);
 
 
     if(timer_->isActive())
     {
+        if(!QDir("Folder").exists())
+            QDir().mkdir("DataXX");
         file = new QFile(filepath);
 //        timer_file->start();
         b_saving_file = true;

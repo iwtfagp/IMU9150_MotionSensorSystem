@@ -7,6 +7,7 @@
 #include <QDebug>
 
 #include <QFile>
+#include <QDir>
 
 #include "mpu_9150.h"
 #include <qwt_dial_needle.h>
@@ -19,6 +20,10 @@
 #include <QMediaPlayer>
 #include <QKeyEvent>
 #include "my_qimu.h"
+
+
+#include <QtConcurrent>
+#include <Qfuture>
 
 using namespace std;
 
@@ -39,10 +44,10 @@ private slots:
 
     void updateView();
     void on_pushButton_deviceConnect_clicked();
-    void insertToTXT();
+
     void on_pushButton_newFile_clicked();
     void on_pushButton_saveFile_clicked();
-
+    void insertToTXT_Thread();
 
 private:
     Ui::MainWindow *ui;
@@ -55,6 +60,7 @@ private:
     ImuData d;
     QFile *file;
     QMediaPlayer *player,*player2;
+    void insertToTXT();
 
 };
 

@@ -20,7 +20,7 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_MainWindow_t {
     QByteArrayData data[7];
-    char stringdata[132];
+    char stringdata[139];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -33,15 +33,16 @@ QT_MOC_LITERAL(0, 0, 10), // "MainWindow"
 QT_MOC_LITERAL(1, 11, 10), // "updateView"
 QT_MOC_LITERAL(2, 22, 0), // ""
 QT_MOC_LITERAL(3, 23, 35), // "on_pushButton_deviceConnect_c..."
-QT_MOC_LITERAL(4, 59, 11), // "insertToTXT"
-QT_MOC_LITERAL(5, 71, 29), // "on_pushButton_newFile_clicked"
-QT_MOC_LITERAL(6, 101, 30) // "on_pushButton_saveFile_clicked"
+QT_MOC_LITERAL(4, 59, 29), // "on_pushButton_newFile_clicked"
+QT_MOC_LITERAL(5, 89, 30), // "on_pushButton_saveFile_clicked"
+QT_MOC_LITERAL(6, 120, 18) // "insertToTXT_Thread"
 
     },
     "MainWindow\0updateView\0\0"
     "on_pushButton_deviceConnect_clicked\0"
-    "insertToTXT\0on_pushButton_newFile_clicked\0"
-    "on_pushButton_saveFile_clicked"
+    "on_pushButton_newFile_clicked\0"
+    "on_pushButton_saveFile_clicked\0"
+    "insertToTXT_Thread"
 };
 #undef QT_MOC_LITERAL
 
@@ -82,9 +83,9 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         switch (_id) {
         case 0: _t->updateView(); break;
         case 1: _t->on_pushButton_deviceConnect_clicked(); break;
-        case 2: _t->insertToTXT(); break;
-        case 3: _t->on_pushButton_newFile_clicked(); break;
-        case 4: _t->on_pushButton_saveFile_clicked(); break;
+        case 2: _t->on_pushButton_newFile_clicked(); break;
+        case 3: _t->on_pushButton_saveFile_clicked(); break;
+        case 4: _t->insertToTXT_Thread(); break;
         default: ;
         }
     }

@@ -202,7 +202,8 @@ Makefile: HumanMeasureSystem.pro C:\Qt\5.4\msvc2013\mkspecs\win32-msvc2013\qmake
 		C:/Qt/5.4/msvc2013/lib/Qt5Widgets.prl \
 		C:/Qt/5.4/msvc2013/lib/Qt5Gui.prl \
 		C:/Qt/5.4/msvc2013/lib/Qt5SerialPort.prl \
-		C:/Qt/5.4/msvc2013/lib/Qt5Network.prl
+		C:/Qt/5.4/msvc2013/lib/Qt5Network.prl \
+		C:/Qt/5.4/msvc2013/lib/Qt5Concurrent.prl
 	$(QMAKE) -spec win32-msvc2013 -o Makefile HumanMeasureSystem.pro
 C:\Qt\5.4\msvc2013\mkspecs\features\spec_pre.prf:
 C:\Qt\5.4\msvc2013\mkspecs\common\shell-win32.conf:
@@ -334,6 +335,7 @@ C:/Qt/5.4/msvc2013/lib/Qt5Widgets.prl:
 C:/Qt/5.4/msvc2013/lib/Qt5Gui.prl:
 C:/Qt/5.4/msvc2013/lib/Qt5SerialPort.prl:
 C:/Qt/5.4/msvc2013/lib/Qt5Network.prl:
+C:/Qt/5.4/msvc2013/lib/Qt5Concurrent.prl:
 qmake: FORCE
 	@$(QMAKE) -spec win32-msvc2013 -o Makefile HumanMeasureSystem.pro
 
