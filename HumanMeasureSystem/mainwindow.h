@@ -10,16 +10,17 @@
 #include <QDir>
 
 #include "mpu_9150.h"
+#include "mpu_lpms.h"
+
 #include <qwt_dial_needle.h>
 #include <QTimer>
 #include "stdio.h"
-#include "LpmsSensorI.h"
-#include "LpmsSensorManagerI.h"
+
 #include <iostream>
 #include <QDateTime>
 #include <QMediaPlayer>
 #include <QKeyEvent>
-#include "my_qimu.h"
+//#include "my_qimu.h"
 
 
 #include <QtConcurrent>
@@ -55,9 +56,11 @@ private:
 //    QTimer *timer_, *timer_file;
     QTimer *timer_;
     MPU_9150 *mpu9150_right_thigh, *mpu9150_right_shank, *mpu9150_left_thigh, *mpu9150_left_shank;
-    LpmsSensorManagerI* manager;
-    LpmsSensorI* lpms_back;
-    ImuData d;
+    MPU_LPMS *mpuLpms_back;
+
+//    LpmsSensorManagerI* manager;
+//    LpmsSensorI* lpms_back;
+//    ImuData d;
     QFile *file;
     QMediaPlayer *player,*player2;
     void insertToTXT();

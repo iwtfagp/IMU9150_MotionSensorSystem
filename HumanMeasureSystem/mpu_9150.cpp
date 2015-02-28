@@ -4,7 +4,10 @@ MPU_9150::MPU_9150()
 {
 
 }
-
+MPU_9150::~MPU_9150()
+{
+    CloseCom();
+}
 bool MPU_9150::open(double port, const char* dll_file)
 {
 
@@ -26,21 +29,23 @@ bool MPU_9150::open(double port, const char* dll_file)
     OpenCom(port) ;
     return MPU_OK;
 }
-
-bool MPU_9150::close()
-{
-    return MPU_OK;
-}
-
 void MPU_9150::getAngle(double* _roll, double* _yaw, double* _pitch)
 {
     GetAllAngle(_roll, _yaw, _pitch);
 }
 void MPU_9150::getAngle()
 {
-    double* _roll, *_yaw, *_pitch;
-    GetAllAngle(_roll, _yaw, _pitch);
-    roll = *_roll;
-    yaw = *_yaw;
-    pitch = *_pitch;
+    GetAllAngle(&roll, &yaw, &pitch);
+}
+double MPU_9150::get_roll()
+{
+    return roll;
+}
+double MPU_9150::get_yaw()
+{
+    return yaw;
+}
+double MPU_9150::get_pitch()
+{
+    return pitch;
 }

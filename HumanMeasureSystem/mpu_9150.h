@@ -13,13 +13,19 @@ class MPU_9150
 {
 public:
     MPU_9150();
+    ~MPU_9150();
     bool open(double port, const char *dll_file);
-    bool close();
     void getAngle(double* _roll, double* _yaw, double* _pitch);
     void getAngle();
-    double roll, yaw, pitch;
+    double get_roll();
+    double get_yaw();
+    double get_pitch();
+
+
+
 private:
     HINSTANCE IMU_data;
+    double roll, yaw, pitch;
     int (*OpenCom)(unsigned short);
     void (*CloseCom)(void);
     void (*GetAllAngle)(double*, double*, double*) ;
