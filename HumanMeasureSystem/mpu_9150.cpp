@@ -32,8 +32,15 @@ bool MPU_9150::close()
     return MPU_OK;
 }
 
-void MPU_9150::getAngle(double* roll, double* yaw, double* pitch)
+void MPU_9150::getAngle(double* _roll, double* _yaw, double* _pitch)
 {
-
-    GetAllAngle(roll, yaw, pitch);
+    GetAllAngle(_roll, _yaw, _pitch);
+}
+void MPU_9150::getAngle()
+{
+    double* _roll, *_yaw, *_pitch;
+    GetAllAngle(_roll, _yaw, _pitch);
+    roll = *_roll;
+    yaw = *_yaw;
+    pitch = *_pitch;
 }

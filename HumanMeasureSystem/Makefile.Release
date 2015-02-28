@@ -14,7 +14,7 @@ CXX           = cl
 DEFINES       = -DUNICODE -DWIN32 -DNOMINMAX -DQT_NO_DEBUG -DQT_MULTIMEDIA_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_NETWORK_LIB -DQT_CONCURRENT_LIB -DQT_CORE_LIB -DNDEBUG
 CFLAGS        = -nologo -Zm200 -Zc:wchar_t -FS -O2 -MD -W3 $(DEFINES)
 CXXFLAGS      = -nologo -Zm200 -Zc:wchar_t -FS -O2 -MD -GR -W3 -w34100 -w34189 -EHsc $(DEFINES)
-INCPATH       = -I"..\..\..\..\LIB\Qwt-6.1.2\include" -I"..\..\..\..\LIB\OpenMAT-1.3.4\include" -I"C:\Qt\5.4\msvc2013\include" -I"C:\Qt\5.4\msvc2013\include\QtMultimedia" -I"C:\Qt\5.4\msvc2013\include\QtWidgets" -I"C:\Qt\5.4\msvc2013\include\QtGui" -I"C:\Qt\5.4\msvc2013\include\QtANGLE" -I"C:\Qt\5.4\msvc2013\include\QtSerialPort" -I"C:\Qt\5.4\msvc2013\include\QtNetwork" -I"C:\Qt\5.4\msvc2013\include\QtConcurrent" -I"C:\Qt\5.4\msvc2013\include\QtCore" -I"release" -I"." -I"C:\Qt\5.4\msvc2013\mkspecs\win32-msvc2013"
+INCPATH       = -I"D:\LIB\Qwt-6.1.2\include" -I"D:\LIB\OpenMAT-1.3.4\include" -I"C:\Qt\5.4\msvc2013\include" -I"C:\Qt\5.4\msvc2013\include\QtMultimedia" -I"C:\Qt\5.4\msvc2013\include\QtWidgets" -I"C:\Qt\5.4\msvc2013\include\QtGui" -I"C:\Qt\5.4\msvc2013\include\QtANGLE" -I"C:\Qt\5.4\msvc2013\include\QtSerialPort" -I"C:\Qt\5.4\msvc2013\include\QtNetwork" -I"C:\Qt\5.4\msvc2013\include\QtConcurrent" -I"C:\Qt\5.4\msvc2013\include\QtCore" -I"release" -I"." -I"C:\Qt\5.4\msvc2013\mkspecs\win32-msvc2013"
 LINKER        = link
 LFLAGS        = /NOLOGO /DYNAMICBASE /NXCOMPAT /INCREMENTAL:NO /SUBSYSTEM:WINDOWS "/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'"
 LIBS          = /LIBPATH:C:\Qt\5.4\msvc2013\lib C:\Qt\5.4\msvc2013\lib\qtmain.lib shell32.lib D:\LIB\Qwt-6.1.2\lib\qwt.lib D:\LIB\OpenMAT-1.3.4\lib\x86\LpSensor.lib C:\Qt\5.4\msvc2013\lib\Qt5Multimedia.lib C:\Qt\5.4\msvc2013\lib\Qt5Widgets.lib C:\Qt\5.4\msvc2013\lib\Qt5Gui.lib C:\Qt\5.4\msvc2013\lib\Qt5SerialPort.lib C:\Qt\5.4\msvc2013\lib\Qt5Network.lib C:\Qt\5.4\msvc2013\lib\Qt5Concurrent.lib C:\Qt\5.4\msvc2013\lib\Qt5Core.lib 
@@ -259,20 +259,23 @@ release\moc_mainwindow.cpp: C:\Qt\5.4\msvc2013\include\QtWidgets\QMainWindow \
 		C:\Qt\5.4\msvc2013\include\QtSerialPort\qserialportinfo.h \
 		C:\Qt\5.4\msvc2013\include\QtCore\QDebug \
 		C:\Qt\5.4\msvc2013\include\QtCore\QFile \
+		C:\Qt\5.4\msvc2013\include\QtCore\QDir \
+		C:\Qt\5.4\msvc2013\include\QtCore\qdir.h \
+		C:\Qt\5.4\msvc2013\include\QtCore\qfileinfo.h \
 		mpu_9150.h \
 		C:\Qt\5.4\msvc2013\include\QtWidgets\QMessageBox \
 		C:\Qt\5.4\msvc2013\include\QtWidgets\qmessagebox.h \
 		C:\Qt\5.4\msvc2013\include\QtWidgets\qdialog.h \
-		..\..\..\..\LIB\Qwt-6.1.2\include\qwt_dial_needle.h \
-		..\..\..\..\LIB\Qwt-6.1.2\include\qwt_global.h \
+		D:\LIB\Qwt-6.1.2\include\qwt_dial_needle.h \
+		D:\LIB\Qwt-6.1.2\include\qwt_global.h \
 		C:\Qt\5.4\msvc2013\include\QtCore\QTimer \
 		C:\Qt\5.4\msvc2013\include\QtCore\qtimer.h \
 		C:\Qt\5.4\msvc2013\include\QtCore\qbasictimer.h \
-		..\..\..\..\LIB\OpenMAT-1.3.4\include\LpmsSensorI.h \
-		..\..\..\..\LIB\OpenMAT-1.3.4\include\ImuData.h \
-		..\..\..\..\LIB\OpenMAT-1.3.4\include\LpmsDefinitions.h \
-		..\..\..\..\LIB\OpenMAT-1.3.4\include\LpmsSensorManagerI.h \
-		..\..\..\..\LIB\OpenMAT-1.3.4\include\DeviceListItem.h \
+		D:\LIB\OpenMAT-1.3.4\include\LpmsSensorI.h \
+		D:\LIB\OpenMAT-1.3.4\include\ImuData.h \
+		D:\LIB\OpenMAT-1.3.4\include\LpmsDefinitions.h \
+		D:\LIB\OpenMAT-1.3.4\include\LpmsSensorManagerI.h \
+		D:\LIB\OpenMAT-1.3.4\include\DeviceListItem.h \
 		C:\Qt\5.4\msvc2013\include\QtCore\QDateTime \
 		C:\Qt\5.4\msvc2013\include\QtCore\qdatetime.h \
 		C:\Qt\5.4\msvc2013\include\QtMultimedia\QMediaPlayer \
@@ -308,8 +311,6 @@ release\moc_mainwindow.cpp: C:\Qt\5.4\msvc2013\include\QtWidgets\QMainWindow \
 		C:\Qt\5.4\msvc2013\include\QtCore\qendian.h \
 		C:\Qt\5.4\msvc2013\include\QtCore\qlibraryinfo.h \
 		C:\Qt\5.4\msvc2013\include\QtCore\qbuffer.h \
-		C:\Qt\5.4\msvc2013\include\QtCore\qdir.h \
-		C:\Qt\5.4\msvc2013\include\QtCore\qfileinfo.h \
 		C:\Qt\5.4\msvc2013\include\QtCore\qdiriterator.h \
 		C:\Qt\5.4\msvc2013\include\QtCore\qfileselector.h \
 		C:\Qt\5.4\msvc2013\include\QtCore\QObject \
@@ -417,7 +418,7 @@ release\moc_mainwindow.cpp: C:\Qt\5.4\msvc2013\include\QtWidgets\QMainWindow \
 		C:\Qt\5.4\msvc2013\include\QtConcurrent\qtconcurrentversion.h \
 		C:\Qt\5.4\msvc2013\include\QtCore\Qfuture \
 		mainwindow.h
-	C:\Qt\5.4\msvc2013\bin\moc.exe $(DEFINES) -D_MSC_VER=1800 -D_WIN32 -IC:/Qt/5.4/msvc2013/mkspecs/win32-msvc2013 -ID:/Code/data_collect/5IMU_walking_measure/HumanMeasureSystem -ID:/LIB/Qwt-6.1.2/include -ID:/LIB/OpenMAT-1.3.4/include -IC:/Qt/5.4/msvc2013/include -IC:/Qt/5.4/msvc2013/include/QtMultimedia -IC:/Qt/5.4/msvc2013/include/QtWidgets -IC:/Qt/5.4/msvc2013/include/QtGui -IC:/Qt/5.4/msvc2013/include/QtANGLE -IC:/Qt/5.4/msvc2013/include/QtSerialPort -IC:/Qt/5.4/msvc2013/include/QtNetwork -IC:/Qt/5.4/msvc2013/include/QtConcurrent -IC:/Qt/5.4/msvc2013/include/QtCore mainwindow.h -o release\moc_mainwindow.cpp
+	C:\Qt\5.4\msvc2013\bin\moc.exe $(DEFINES) -D_MSC_VER=1800 -D_WIN32 -IC:/Qt/5.4/msvc2013/mkspecs/win32-msvc2013 -ID:/Master/github_Code/data_collection/IMU9150_MotionSensorSystem/HumanMeasureSystem -ID:/LIB/Qwt-6.1.2/include -ID:/LIB/OpenMAT-1.3.4/include -IC:/Qt/5.4/msvc2013/include -IC:/Qt/5.4/msvc2013/include/QtMultimedia -IC:/Qt/5.4/msvc2013/include/QtWidgets -IC:/Qt/5.4/msvc2013/include/QtGui -IC:/Qt/5.4/msvc2013/include/QtANGLE -IC:/Qt/5.4/msvc2013/include/QtSerialPort -IC:/Qt/5.4/msvc2013/include/QtNetwork -IC:/Qt/5.4/msvc2013/include/QtConcurrent -IC:/Qt/5.4/msvc2013/include/QtCore mainwindow.h -o release\moc_mainwindow.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -425,8 +426,8 @@ compiler_uic_make_all: ui_mainwindow.h
 compiler_uic_clean:
 	-$(DEL_FILE) ui_mainwindow.h
 ui_mainwindow.h: mainwindow.ui \
-		..\..\..\..\LIB\Qwt-6.1.2\include\qwt_dial.h \
-		..\..\..\..\LIB\Qwt-6.1.2\include\qwt_global.h \
+		D:\LIB\Qwt-6.1.2\include\qwt_dial.h \
+		D:\LIB\Qwt-6.1.2\include\qwt_global.h \
 		C:\Qt\5.4\msvc2013\include\QtCore\qglobal.h \
 		C:\Qt\5.4\msvc2013\include\QtCore\qconfig.h \
 		C:\Qt\5.4\msvc2013\include\QtCore\qfeatures.h \
@@ -455,11 +456,11 @@ ui_mainwindow.h: mainwindow.ui \
 		C:\Qt\5.4\msvc2013\include\QtCore\qglobalstatic.h \
 		C:\Qt\5.4\msvc2013\include\QtCore\qmutex.h \
 		C:\Qt\5.4\msvc2013\include\QtCore\qnumeric.h \
-		..\..\..\..\LIB\Qwt-6.1.2\include\qwt_abstract_slider.h \
-		..\..\..\..\LIB\Qwt-6.1.2\include\qwt_abstract_scale.h \
-		..\..\..\..\LIB\Qwt-6.1.2\include\qwt_abstract_scale_draw.h \
-		..\..\..\..\LIB\Qwt-6.1.2\include\qwt_scale_div.h \
-		..\..\..\..\LIB\Qwt-6.1.2\include\qwt_interval.h \
+		D:\LIB\Qwt-6.1.2\include\qwt_abstract_slider.h \
+		D:\LIB\Qwt-6.1.2\include\qwt_abstract_scale.h \
+		D:\LIB\Qwt-6.1.2\include\qwt_abstract_scale_draw.h \
+		D:\LIB\Qwt-6.1.2\include\qwt_scale_div.h \
+		D:\LIB\Qwt-6.1.2\include\qwt_interval.h \
 		C:\Qt\5.4\msvc2013\include\QtCore\qmetatype.h \
 		C:\Qt\5.4\msvc2013\include\QtCore\qbytearray.h \
 		C:\Qt\5.4\msvc2013\include\QtCore\qrefcount.h \
@@ -498,7 +499,7 @@ ui_mainwindow.h: mainwindow.ui \
 		C:\Qt\5.4\msvc2013\include\QtCore\qpoint.h \
 		C:\Qt\5.4\msvc2013\include\QtCore\qset.h \
 		C:\Qt\5.4\msvc2013\include\QtCore\qcontiguouscache.h \
-		..\..\..\..\LIB\Qwt-6.1.2\include\qwt_text.h \
+		D:\LIB\Qwt-6.1.2\include\qwt_text.h \
 		C:\Qt\5.4\msvc2013\include\QtCore\qsize.h \
 		C:\Qt\5.4\msvc2013\include\QtGui\qfont.h \
 		C:\Qt\5.4\msvc2013\include\QtGui\qwindowdefs.h \
@@ -662,20 +663,23 @@ release\main.obj: main.cpp mainwindow.h \
 		C:\Qt\5.4\msvc2013\include\QtSerialPort\qserialportinfo.h \
 		C:\Qt\5.4\msvc2013\include\QtCore\QDebug \
 		C:\Qt\5.4\msvc2013\include\QtCore\QFile \
+		C:\Qt\5.4\msvc2013\include\QtCore\QDir \
+		C:\Qt\5.4\msvc2013\include\QtCore\qdir.h \
+		C:\Qt\5.4\msvc2013\include\QtCore\qfileinfo.h \
 		mpu_9150.h \
 		C:\Qt\5.4\msvc2013\include\QtWidgets\QMessageBox \
 		C:\Qt\5.4\msvc2013\include\QtWidgets\qmessagebox.h \
 		C:\Qt\5.4\msvc2013\include\QtWidgets\qdialog.h \
-		..\..\..\..\LIB\Qwt-6.1.2\include\qwt_dial_needle.h \
-		..\..\..\..\LIB\Qwt-6.1.2\include\qwt_global.h \
+		D:\LIB\Qwt-6.1.2\include\qwt_dial_needle.h \
+		D:\LIB\Qwt-6.1.2\include\qwt_global.h \
 		C:\Qt\5.4\msvc2013\include\QtCore\QTimer \
 		C:\Qt\5.4\msvc2013\include\QtCore\qtimer.h \
 		C:\Qt\5.4\msvc2013\include\QtCore\qbasictimer.h \
-		..\..\..\..\LIB\OpenMAT-1.3.4\include\LpmsSensorI.h \
-		..\..\..\..\LIB\OpenMAT-1.3.4\include\ImuData.h \
-		..\..\..\..\LIB\OpenMAT-1.3.4\include\LpmsDefinitions.h \
-		..\..\..\..\LIB\OpenMAT-1.3.4\include\LpmsSensorManagerI.h \
-		..\..\..\..\LIB\OpenMAT-1.3.4\include\DeviceListItem.h \
+		D:\LIB\OpenMAT-1.3.4\include\LpmsSensorI.h \
+		D:\LIB\OpenMAT-1.3.4\include\ImuData.h \
+		D:\LIB\OpenMAT-1.3.4\include\LpmsDefinitions.h \
+		D:\LIB\OpenMAT-1.3.4\include\LpmsSensorManagerI.h \
+		D:\LIB\OpenMAT-1.3.4\include\DeviceListItem.h \
 		C:\Qt\5.4\msvc2013\include\QtCore\QDateTime \
 		C:\Qt\5.4\msvc2013\include\QtCore\qdatetime.h \
 		C:\Qt\5.4\msvc2013\include\QtMultimedia\QMediaPlayer \
@@ -711,8 +715,6 @@ release\main.obj: main.cpp mainwindow.h \
 		C:\Qt\5.4\msvc2013\include\QtCore\qendian.h \
 		C:\Qt\5.4\msvc2013\include\QtCore\qlibraryinfo.h \
 		C:\Qt\5.4\msvc2013\include\QtCore\qbuffer.h \
-		C:\Qt\5.4\msvc2013\include\QtCore\qdir.h \
-		C:\Qt\5.4\msvc2013\include\QtCore\qfileinfo.h \
 		C:\Qt\5.4\msvc2013\include\QtCore\qdiriterator.h \
 		C:\Qt\5.4\msvc2013\include\QtCore\qfileselector.h \
 		C:\Qt\5.4\msvc2013\include\QtCore\QObject \
@@ -938,20 +940,23 @@ release\mainwindow.obj: mainwindow.cpp mainwindow.h \
 		C:\Qt\5.4\msvc2013\include\QtSerialPort\qserialportinfo.h \
 		C:\Qt\5.4\msvc2013\include\QtCore\QDebug \
 		C:\Qt\5.4\msvc2013\include\QtCore\QFile \
+		C:\Qt\5.4\msvc2013\include\QtCore\QDir \
+		C:\Qt\5.4\msvc2013\include\QtCore\qdir.h \
+		C:\Qt\5.4\msvc2013\include\QtCore\qfileinfo.h \
 		mpu_9150.h \
 		C:\Qt\5.4\msvc2013\include\QtWidgets\QMessageBox \
 		C:\Qt\5.4\msvc2013\include\QtWidgets\qmessagebox.h \
 		C:\Qt\5.4\msvc2013\include\QtWidgets\qdialog.h \
-		..\..\..\..\LIB\Qwt-6.1.2\include\qwt_dial_needle.h \
-		..\..\..\..\LIB\Qwt-6.1.2\include\qwt_global.h \
+		D:\LIB\Qwt-6.1.2\include\qwt_dial_needle.h \
+		D:\LIB\Qwt-6.1.2\include\qwt_global.h \
 		C:\Qt\5.4\msvc2013\include\QtCore\QTimer \
 		C:\Qt\5.4\msvc2013\include\QtCore\qtimer.h \
 		C:\Qt\5.4\msvc2013\include\QtCore\qbasictimer.h \
-		..\..\..\..\LIB\OpenMAT-1.3.4\include\LpmsSensorI.h \
-		..\..\..\..\LIB\OpenMAT-1.3.4\include\ImuData.h \
-		..\..\..\..\LIB\OpenMAT-1.3.4\include\LpmsDefinitions.h \
-		..\..\..\..\LIB\OpenMAT-1.3.4\include\LpmsSensorManagerI.h \
-		..\..\..\..\LIB\OpenMAT-1.3.4\include\DeviceListItem.h \
+		D:\LIB\OpenMAT-1.3.4\include\LpmsSensorI.h \
+		D:\LIB\OpenMAT-1.3.4\include\ImuData.h \
+		D:\LIB\OpenMAT-1.3.4\include\LpmsDefinitions.h \
+		D:\LIB\OpenMAT-1.3.4\include\LpmsSensorManagerI.h \
+		D:\LIB\OpenMAT-1.3.4\include\DeviceListItem.h \
 		C:\Qt\5.4\msvc2013\include\QtCore\QDateTime \
 		C:\Qt\5.4\msvc2013\include\QtCore\qdatetime.h \
 		C:\Qt\5.4\msvc2013\include\QtMultimedia\QMediaPlayer \
@@ -987,8 +992,6 @@ release\mainwindow.obj: mainwindow.cpp mainwindow.h \
 		C:\Qt\5.4\msvc2013\include\QtCore\qendian.h \
 		C:\Qt\5.4\msvc2013\include\QtCore\qlibraryinfo.h \
 		C:\Qt\5.4\msvc2013\include\QtCore\qbuffer.h \
-		C:\Qt\5.4\msvc2013\include\QtCore\qdir.h \
-		C:\Qt\5.4\msvc2013\include\QtCore\qfileinfo.h \
 		C:\Qt\5.4\msvc2013\include\QtCore\qdiriterator.h \
 		C:\Qt\5.4\msvc2013\include\QtCore\qfileselector.h \
 		C:\Qt\5.4\msvc2013\include\QtCore\QObject \
@@ -1152,13 +1155,13 @@ release\mainwindow.obj: mainwindow.cpp mainwindow.h \
 		C:\Qt\5.4\msvc2013\include\QtWidgets\QToolBar \
 		C:\Qt\5.4\msvc2013\include\QtWidgets\qtoolbar.h \
 		C:\Qt\5.4\msvc2013\include\QtWidgets\QWidget \
-		..\..\..\..\LIB\Qwt-6.1.2\include\qwt_dial.h \
-		..\..\..\..\LIB\Qwt-6.1.2\include\qwt_abstract_slider.h \
-		..\..\..\..\LIB\Qwt-6.1.2\include\qwt_abstract_scale.h \
-		..\..\..\..\LIB\Qwt-6.1.2\include\qwt_abstract_scale_draw.h \
-		..\..\..\..\LIB\Qwt-6.1.2\include\qwt_scale_div.h \
-		..\..\..\..\LIB\Qwt-6.1.2\include\qwt_interval.h \
-		..\..\..\..\LIB\Qwt-6.1.2\include\qwt_text.h
+		D:\LIB\Qwt-6.1.2\include\qwt_dial.h \
+		D:\LIB\Qwt-6.1.2\include\qwt_abstract_slider.h \
+		D:\LIB\Qwt-6.1.2\include\qwt_abstract_scale.h \
+		D:\LIB\Qwt-6.1.2\include\qwt_abstract_scale_draw.h \
+		D:\LIB\Qwt-6.1.2\include\qwt_scale_div.h \
+		D:\LIB\Qwt-6.1.2\include\qwt_interval.h \
+		D:\LIB\Qwt-6.1.2\include\qwt_text.h
 
 release\mpu_9150.obj: mpu_9150.cpp mpu_9150.h \
 		C:\Qt\5.4\msvc2013\include\QtWidgets\QMessageBox \
@@ -1267,11 +1270,11 @@ release\mpu_9150.obj: mpu_9150.cpp mpu_9150.h \
 		C:\Qt\5.4\msvc2013\include\QtGui\qtouchdevice.h
 
 release\my_qimu.obj: my_qimu.cpp my_qimu.h \
-		..\..\..\..\LIB\OpenMAT-1.3.4\include\LpmsSensorI.h \
-		..\..\..\..\LIB\OpenMAT-1.3.4\include\ImuData.h \
-		..\..\..\..\LIB\OpenMAT-1.3.4\include\LpmsDefinitions.h \
-		..\..\..\..\LIB\OpenMAT-1.3.4\include\LpmsSensorManagerI.h \
-		..\..\..\..\LIB\OpenMAT-1.3.4\include\DeviceListItem.h
+		D:\LIB\OpenMAT-1.3.4\include\LpmsSensorI.h \
+		D:\LIB\OpenMAT-1.3.4\include\ImuData.h \
+		D:\LIB\OpenMAT-1.3.4\include\LpmsDefinitions.h \
+		D:\LIB\OpenMAT-1.3.4\include\LpmsSensorManagerI.h \
+		D:\LIB\OpenMAT-1.3.4\include\DeviceListItem.h
 
 release\moc_mainwindow.obj: release\moc_mainwindow.cpp 
 

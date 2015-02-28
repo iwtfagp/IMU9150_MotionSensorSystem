@@ -2,19 +2,29 @@
 #include "ui_mainwindow.h"
 
 
-//#define TEST
+
 //vector<double> data_buffer[15];
 //double **data_buffer = new double[5][3];
 
 const int row_Num = 5;
 const int col_Num = 3;
 double data_buffer[row_Num][col_Num];
+
+
+
+
+//data_buffer[0][0~2] is lpms_data
+//data_buffer[1][0~2] is LEFTTHIGH
+//data_buffer[2][0~2] is RIGHTTHIGH
+//data_buffer[3][0~2] is LEFTSHANK
+//data_buffer[4][0~2] is RIGHTSHANK
+
 double angle_data_buffer[4];
 bool b_saving_file = false;
 
 double* display_data;
 
-enum Leg{LEFTTHIGH = 1, RIGHTTHIGH, LEFTSHANK, RIGHTSHANK};
+//enum Leg{BACK_REF, LEFT_THIGH, RIGH_TTHIGH, LEFT_SHANK, RIGHT_SHANK};
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -22,24 +32,17 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    player = new QMediaPlayer;
+    player = new QMediaPlayer; // make sound for remote controler.
 
-
+    //make com port number list.
     foreach (const QSerialPortInfo &info, QSerialPortInfo::availablePorts()) {
         list.append(info.portName());
-
-
     }
-    ui->pushButton_newFile->setDisabled(true);
-    ui->pushButton_saveFile->setDisabled(true);
-
 
     ui->comboBoxIMU_left_shank->addItems(list);
     ui->comboBoxIMU_left_thigh->addItems(list);
     ui->comboBoxIMU_right_shank->addItems(list);
     ui->comboBoxIMU_right_thigh->addItems(list);
-
-
 
     ui->comboBoxIMU_left_thigh->setCurrentText("COM3");
     ui->comboBoxIMU_right_thigh->setCurrentText("COM5");
@@ -47,29 +50,21 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->comboBoxIMU_right_shank->setCurrentText("COM9");
 
 
-//    ui->comboBoxIMU_left_thigh->setCurrentIndex(4);
-//    ui->comboBoxIMU_right_thigh->setCurrentIndex(1);
-//    ui->comboBoxIMU_left_shank->setCurrentIndex(12);
-//    ui->comboBoxIMU_right_shank->setCurrentIndex(10);
-
-    file = new QFile("out.txt");
-
     timer_ = new QTimer(this);
     timer_->stop();
     timer_->setInterval(20);
 
-//    timer_file = new QTimer(this);
-//    timer_file->stop();
-//    timer_file->setInterval(10);
-
     QObject::connect(timer_, SIGNAL(timeout()), this, SLOT(updateView()));
     QObject::connect(timer_, SIGNAL(timeout()), this, SLOT(insertToTXT_Thread()));
-//    QObject::connect(timer_file, SIGNAL(timeout()), this, SLOT(insertToTXT()));
+
+
+    ui->pushButton_newFile->setDisabled(true);
+    ui->pushButton_saveFile->setDisabled(true);
 }
 
 MainWindow::~MainWindow()
 {
-#ifndef TEST
+
     //     Removes the initialized sensor
     manager->removeSensor(lpms_back);
     // Deletes LpmsSensorManager object
@@ -79,69 +74,59 @@ MainWindow::~MainWindow()
     mpu9150_right_thigh->close();
     mpu9150_right_shank->close();
 
-#endif
     delete ui;
 }
 
 void MainWindow::updateView()
 {
-#ifndef TEST
+
+
+
+
+
+
     if (lpms_back->getConnectionStatus() == SENSOR_CONNECTION_CONNECTED) {
         // Reads quaternion data
         d = lpms_back->getCurrentData();
+//        back_ref.roll = d.r[0];
+//        back_ref.yaw = d.r[1];
+//        back_ref.pitch = d.r[2];
         data_buffer[0][0] = d.r[0];
         data_buffer[0][1] = d.r[1];
         data_buffer[0][2] = d.r[2];
     }
 
-    mpu9150_left_thigh->getAngle(&data_buffer[LEFTTHIGH][0], &data_buffer[LEFTTHIGH][1], &data_buffer[LEFTTHIGH][2]);
-    mpu9150_right_thigh->getAngle(&data_buffer[RIGHTTHIGH][0], &data_buffer[RIGHTTHIGH][1], &data_buffer[RIGHTTHIGH][2]);
-    mpu9150_left_shank->getAngle(&data_buffer[LEFTSHANK][0], &data_buffer[LEFTSHANK][1], &data_buffer[LEFTSHANK][2]);
-    mpu9150_right_shank->getAngle(&data_buffer[RIGHTSHANK][0], &data_buffer[RIGHTSHANK][1], &data_buffer[RIGHTSHANK][2]);
+//    mpu9150_left_thigh->getAngle(&data_buffer[LEFTTHIGH][0], &data_buffer[LEFTTHIGH][1], &data_buffer[LEFTTHIGH][2]);
+//    mpu9150_right_thigh->getAngle(&data_buffer[RIGHTTHIGH][0], &data_buffer[RIGHTTHIGH][1], &data_buffer[RIGHTTHIGH][2]);
+//    mpu9150_left_shank->getAngle(&data_buffer[LEFTSHANK][0], &data_buffer[LEFTSHANK][1], &data_buffer[LEFTSHANK][2]);
+//    mpu9150_right_shank->getAngle(&data_buffer[RIGHTSHANK][0], &data_buffer[RIGHTSHANK][1], &data_buffer[RIGHTSHANK][2]);
+        mpu9150_left_thigh->getAngle();
+        mpu9150_right_thigh->getAngle();
+        mpu9150_left_shank->getAngle();
+        mpu9150_right_shank->getAngle();
 
 
-#else
-    qsrand(qrand());
-    for(int row = 0; row < row_Num; row++)
-        for(int col = 0; col < col_Num ; col++)
-        {
-
-            data_buffer[row][col] = qrand()%360;
-
-        }
-#endif
-    double back, left_thigh, right_thigh, left_shank, right_shank;
-
-
-
-    for(int i = 0; i < 5; i++)
-    {
-        if(data_buffer[i][0]<0)
-            data_buffer[i][0] += 360;
-    }
-
-
-    back = data_buffer[0][0];
-    left_thigh = data_buffer[LEFTTHIGH][0];
-    right_thigh = data_buffer[RIGHTTHIGH][0];
-    left_shank = data_buffer[LEFTSHANK][0];
-    right_shank = data_buffer[RIGHTSHANK][0];
+    int back = data_buffer[0][0];
+//    left_thigh = data_buffer[LEFTTHIGH][0];
+//    right_thigh = data_buffer[RIGHTTHIGH][0];
+//    left_shank = data_buffer[LEFTSHANK][0];
+//    right_shank = data_buffer[RIGHTSHANK][0];
 
 
     ui->lcdNumber_back->display(back);
-    ui->lcdNumber_left_thigh->display(left_thigh);
-    ui->lcdNumber_right_thigh->display(right_thigh);
-    ui->lcdNumber_left_shank->display(left_shank);
-    ui->lcdNumber_right_shank->display(right_shank);
+    ui->lcdNumber_left_thigh->display(mpu9150_left_thigh->roll);
+    ui->lcdNumber_right_thigh->display(mpu9150_right_thigh->roll);
+    ui->lcdNumber_left_shank->display(mpu9150_left_shank->roll);
+    ui->lcdNumber_right_shank->display(mpu9150_right_shank->roll);
 
 
     enum legAngle{left_hip, right_hip, left_knee, right_knee};
     
 
-    angle_data_buffer[left_hip] = -(left_thigh - back);
-    angle_data_buffer[right_hip] = -(right_thigh - back);
-    angle_data_buffer[left_knee] = left_shank - left_thigh;
-    angle_data_buffer[right_knee] = right_shank - right_thigh;
+    angle_data_buffer[left_hip] = -(mpu9150_left_thigh->roll - back);
+    angle_data_buffer[right_hip] = -(mpu9150_right_thigh->roll - back);
+    angle_data_buffer[left_knee] = mpu9150_left_shank->roll - mpu9150_left_thigh->roll;
+    angle_data_buffer[right_knee] = mpu9150_right_shank->roll - mpu9150_right_thigh->roll;
 
     for(int i = 0; i< 4; i++)
     {
@@ -152,22 +137,6 @@ void MainWindow::updateView()
 
     }
 
-    //    QString tmp;
-    //    tmp.append("left_hip");
-    //    tmp.append(QString::number(left_hip));
-    //    tmp.append("right_hip");
-    //    tmp.append(QString::number(right_hip));
-    //    tmp.append("left_knee");
-    //    tmp.append(QString::number(left_knee));
-    //    tmp.append("right_knee");
-    //    tmp.append(QString::number(right_knee));
-
-    //    ui->textBrowser->append(tmp);
-
-
-
-
-
     ui->Dial_left_hip->setNeedle(new QwtDialSimpleNeedle( QwtDialSimpleNeedle::Arrow ,true , Qt::red ));
     ui->Dial_left_hip->setValue(angle_data_buffer[left_hip]);
     ui->Dial_right_hip->setNeedle(new QwtDialSimpleNeedle( QwtDialSimpleNeedle::Arrow ,true , Qt::red ));
@@ -176,8 +145,6 @@ void MainWindow::updateView()
     ui->Dial_left_knee->setValue(angle_data_buffer[left_knee]);
     ui->Dial_right_knee->setNeedle(new QwtDialSimpleNeedle( QwtDialSimpleNeedle::Arrow ,true , Qt::red ));
     ui->Dial_right_knee->setValue(angle_data_buffer[right_knee]);
-
-
     ui->lcdNumber_left_hip->display(angle_data_buffer[left_hip]);
     ui->lcdNumber_right_hip->display(angle_data_buffer[right_hip]);
     ui->lcdNumber_left_knee->display(angle_data_buffer[left_knee]);
@@ -195,7 +162,7 @@ void MainWindow::on_pushButton_deviceConnect_clicked()
     ui->pushButton_deviceConnect->setDisabled(true);
 
 
-#ifndef TEST
+
     // Gets a LpmsSensorManager instance
     manager = LpmsSensorManagerFactory();
     cout<<"LpmsSensorManagerFactory"<<endl;
@@ -242,11 +209,7 @@ void MainWindow::on_pushButton_deviceConnect_clicked()
 
     ui->pushButton_newFile->setEnabled(true);
 
-#else
 
-    timer_->start();
-
-#endif
 }
 
 void MainWindow::insertToTXT_Thread()

@@ -53,4 +53,7 @@ int My_qIMU::ConnectIMU(int TryLimit, int TimeOut, const char* IMU_ID)
 void My_qIMU::GetIMUData(void)
 {
     d = lpms->getCurrentData() ;
+    roll = d.r[0];
+    yaw = d.r[1];
+    pitch = d.r[2];
 }

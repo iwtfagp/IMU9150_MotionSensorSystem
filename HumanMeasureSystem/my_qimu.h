@@ -11,7 +11,7 @@ class My_qIMU
 public:
     My_qIMU();     // "00:06:66:4B:24:F2"
     ~My_qIMU() ;
-
+    double roll, yaw, pitch;
     int ConnectIMU(int Try_limit, int TimeOut, const char* IMU_ID) ;
     void GetIMUData(void) ;
 
@@ -23,6 +23,7 @@ public:
     // Gets a LpmsSensorManager instance
     LpmsSensorManagerI* manager ;
     LpmsSensorI* lpms ;
+
 
     bool fg_IMU ;
 
