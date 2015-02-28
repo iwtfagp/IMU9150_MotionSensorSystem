@@ -17,11 +17,11 @@ DEFINES += NOMINMAX
 SOURCES += main.cpp\
         mainwindow.cpp \
     mpu_9150.cpp \
-    my_qimu.cpp
+    mpu_lpms.cpp
 
 HEADERS  += mainwindow.h \
     mpu_9150.h \
-    my_qimu.h
+    mpu_lpms.h
 
 FORMS    += mainwindow.ui
 
