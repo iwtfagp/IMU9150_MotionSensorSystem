@@ -6,9 +6,7 @@
 //vector<double> data_buffer[15];
 //double **data_buffer = new double[5][3];
 
-//const int row_Num = 5;
-//const int col_Num = 3;
-//double data_buffer[row_Num][col_Num];
+
 
 const int data_buffer_number = 15+4;
 double data_buffer[data_buffer_number] = {0};
@@ -64,7 +62,15 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
-    delete mpuLpms_back;
+    //     Removes the initialized sensor
+    manager->removeSensor(lpms_back);
+    // Deletes LpmsSensorManager object
+    delete manager;
+
+
+
+
+
     delete ui;
 }
 
@@ -72,7 +78,14 @@ void MainWindow::updateView()
 {
 
 
-        mpuLpms_back->getAngle();
+//        mpuLpms_back->getAngle();
+    if (lpms_back->getConnectionStatus() == SENSOR_CONNECTION_CONNECTED) {
+        // Reads quaternion data
+        d = lpms_back->getCurrentData();
+        data_buffer[4+0] = d.r[0];
+        data_buffer[4+1] = d.r[1];
+        data_buffer[4+2] = d.r[2];
+    }
 
         mpu9150_left_thigh->getAngle();
         mpu9150_right_thigh->getAngle();
@@ -83,8 +96,8 @@ void MainWindow::updateView()
 
     enum LEG_ANGLE{left_hip, right_hip, left_knee, right_knee};
     
-        angle_data_buffer[left_hip] = -(mpu9150_left_thigh->get_roll() - mpuLpms_back->get_roll());
-        angle_data_buffer[right_hip] = -(mpu9150_right_thigh->get_roll() - mpuLpms_back->get_roll());
+        angle_data_buffer[left_hip] = -(mpu9150_left_thigh->get_roll() - data_buffer[4+0]);
+        angle_data_buffer[right_hip] = -(mpu9150_right_thigh->get_roll() - data_buffer[4+0]);
         angle_data_buffer[left_knee] = mpu9150_left_shank->get_roll() - mpu9150_left_thigh->get_roll();
         angle_data_buffer[right_knee] = mpu9150_right_shank->get_roll() - mpu9150_right_thigh->get_roll();
 
@@ -97,9 +110,9 @@ void MainWindow::updateView()
 
             data_buffer[i] = angle_data_buffer[i];
         }
-        data_buffer[4] = mpuLpms_back->get_roll();
-        data_buffer[4+1] = mpuLpms_back->get_yaw();
-        data_buffer[4+2] = mpuLpms_back->get_pitch();
+//        data_buffer[4] = mpuLpms_back->get_roll();
+//        data_buffer[4+1] = mpuLpms_back->get_yaw();
+//        data_buffer[4+2] = mpuLpms_back->get_pitch();
 
         data_buffer[7] = mpu9150_left_thigh->get_roll();
         data_buffer[7+1] = mpu9150_left_thigh->get_yaw();
@@ -145,7 +158,16 @@ void MainWindow::on_pushButton_deviceConnect_clicked()
 {
 
 
-        mpuLpms_back->ConnectIMU(ui->lineEdit_lpmsPortName->text().toLocal8Bit());
+//        mpuLpms_back->ConnectIMU(ui->lineEdit_lpmsPortName->text().toLocal8Bit());
+        // Gets a LpmsSensorManager instance
+        manager = LpmsSensorManagerFactory();
+        cout<<"LpmsSensorManagerFactory"<<endl;
+        // Connects to LPMS-B sensor with address 00:11:22:33:44:55
+        lpms_back = manager->addSensor(DEVICE_LPMS_B, ui->lineEdit_lpmsPortName->text().toLocal8Bit());
+        cout<<"addSensor"<<endl;
+        lpms_back->getConnectionStatus();
+
+
 
         mpu9150_left_thigh = new MPU_9150();
         bool b_lh  =mpu9150_left_thigh->open(ui->comboBoxIMU_left_thigh->currentText().remove("COM").toInt(), "MPU9150-1.dll");

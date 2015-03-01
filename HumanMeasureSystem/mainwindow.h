@@ -21,7 +21,8 @@
 #include <QMediaPlayer>
 #include <QKeyEvent>
 //#include "my_qimu.h"
-
+#include "LpmsSensorI.h"
+#include "LpmsSensorManagerI.h"
 
 #include <QtConcurrent>
 #include <Qfuture>
@@ -56,13 +57,20 @@ private:
 //    QTimer *timer_, *timer_file;
     QTimer *timer_;
     MPU_9150 *mpu9150_right_thigh, *mpu9150_right_shank, *mpu9150_left_thigh, *mpu9150_left_shank;
-    MPU_LPMS *mpuLpms_back;
+
+//    MPU_LPMS *mpuLpms_back;
 
 //    LpmsSensorManagerI* manager;
 //    LpmsSensorI* lpms_back;
 //    ImuData d;
     QFile *file;
-    QMediaPlayer *player,*player2;
+    QMediaPlayer *player;
+
+    LpmsSensorManagerI* manager;
+    LpmsSensorI* lpms_back;
+    ImuData d;
+
+
     void insertToTXT();
 
 };
