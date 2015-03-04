@@ -20,7 +20,7 @@
 #include <QDateTime>
 #include <QMediaPlayer>
 #include <QKeyEvent>
-//#include "my_qimu.h"
+
 #include "LpmsSensorI.h"
 #include "LpmsSensorManagerI.h"
 
