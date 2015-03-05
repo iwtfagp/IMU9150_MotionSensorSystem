@@ -200,9 +200,7 @@ void MainWindow::on_pushButton_newFile_clicked()
         ui->textBrowser->append("Please open device first.");
 
     }
-
-
-
+    file->open(QIODevice::WriteOnly | QIODevice::Text);
     ui->pushButton_newFile->setDisabled(true);
     ui->pushButton_saveFile->setEnabled(true);
 }
@@ -211,8 +209,7 @@ void MainWindow::insertToTXT()
 {
     if(b_saving_file)
     {
-        if (file->open(QIODevice::WriteOnly | QIODevice::Text))
-            return;
+
         QTextStream out(file);
 
 
