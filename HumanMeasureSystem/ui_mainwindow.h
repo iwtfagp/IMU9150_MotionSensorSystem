@@ -62,7 +62,6 @@ public:
     QLabel *label_6;
     QLineEdit *lineEdit_username;
     QPushButton *pushButton_newFile;
-    QLineEdit *file_path;
     QPushButton *pushButton_saveFile;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
@@ -274,17 +273,12 @@ public:
 
         gridLayout_3->addWidget(pushButton_newFile, 1, 0, 1, 2);
 
-        file_path = new QLineEdit(centralWidget);
-        file_path->setObjectName(QStringLiteral("file_path"));
-
-        gridLayout_3->addWidget(file_path, 2, 0, 1, 2);
-
         pushButton_saveFile = new QPushButton(centralWidget);
         pushButton_saveFile->setObjectName(QStringLiteral("pushButton_saveFile"));
         pushButton_saveFile->setMinimumSize(QSize(0, 50));
         pushButton_saveFile->setFont(font);
 
-        gridLayout_3->addWidget(pushButton_saveFile, 3, 0, 1, 2);
+        gridLayout_3->addWidget(pushButton_saveFile, 2, 0, 1, 2);
 
 
         gridLayout_5->addLayout(gridLayout_3, 2, 1, 1, 1);
