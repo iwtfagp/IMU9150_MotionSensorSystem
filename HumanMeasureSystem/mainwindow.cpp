@@ -212,9 +212,6 @@ void MainWindow::insertToTXT()
 
         QTextStream out(file);
 
-
-
-
         for(int angle = 0; angle < data_buffer_number; angle++)
         {
             out <<data_buffer[angle]<<",";
@@ -237,14 +234,14 @@ void MainWindow::on_pushButton_saveFile_clicked()
 
 void MainWindow::keyPressEvent(QKeyEvent* event)
 {
-    if(event->key() == Qt::Key_PageUp && ui->pushButton_newFile->isEnabled())
+    if((event->key() == Qt::Key_PageUp || event->key() == Qt::Key_Up) && ui->pushButton_newFile->isEnabled())
     {
         ui->pushButton_newFile->click();
         ui->textBrowser->append("Recording");
 
         player->play();
     }
-    else if(event->key() == Qt::Key_PageDown && ui->pushButton_saveFile->isEnabled())
+    else if((event->key() == Qt::Key_PageDown || event->key() == Qt::Key_Down) && ui->pushButton_saveFile->isEnabled())
     {
         ui->pushButton_saveFile->click();
         ui->textBrowser->append("Recorded OK");
