@@ -15,6 +15,7 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QGridLayout>
+#include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLCDNumber>
 #include <QtWidgets/QLabel>
@@ -22,6 +23,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QRadioButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTextBrowser>
 #include <QtWidgets/QToolBar>
@@ -35,15 +37,12 @@ class Ui_MainWindow
 public:
     QWidget *centralWidget;
     QGridLayout *gridLayout_5;
-    QGridLayout *gridLayout_4;
-    QwtDial *Dial_left_hip;
-    QwtDial *Dial_right_knee;
-    QwtDial *Dial_right_hip;
-    QwtDial *Dial_left_knee;
-    QLCDNumber *lcdNumber_left_hip;
-    QLCDNumber *lcdNumber_right_hip;
-    QLCDNumber *lcdNumber_left_knee;
-    QLCDNumber *lcdNumber_right_knee;
+    QGridLayout *gridLayout_3;
+    QLabel *label_6;
+    QLineEdit *lineEdit_username;
+    QPushButton *pushButton_newFile;
+    QPushButton *pushButton_saveFile;
+    QTextBrowser *textBrowser;
     QGridLayout *gridLayout;
     QGridLayout *gridLayout_2;
     QLCDNumber *lcdNumber_back;
@@ -57,12 +56,19 @@ public:
     QLCDNumber *lcdNumber_left_shank;
     QLCDNumber *lcdNumber_right_thigh;
     QLCDNumber *lcdNumber_left_thigh;
-    QTextBrowser *textBrowser;
-    QGridLayout *gridLayout_3;
-    QLabel *label_6;
-    QLineEdit *lineEdit_username;
-    QPushButton *pushButton_newFile;
-    QPushButton *pushButton_saveFile;
+    QGridLayout *gridLayout_4;
+    QwtDial *Dial_left_hip;
+    QwtDial *Dial_right_knee;
+    QwtDial *Dial_right_hip;
+    QwtDial *Dial_left_knee;
+    QLCDNumber *lcdNumber_left_hip;
+    QLCDNumber *lcdNumber_right_hip;
+    QLCDNumber *lcdNumber_left_knee;
+    QLCDNumber *lcdNumber_right_knee;
+    QGroupBox *groupBox;
+    QGridLayout *gridLayout_6;
+    QRadioButton *radioButton_Leg;
+    QRadioButton *radioButton_Arm;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -71,13 +77,126 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(720, 629);
+        MainWindow->resize(794, 709);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         gridLayout_5 = new QGridLayout(centralWidget);
         gridLayout_5->setSpacing(6);
         gridLayout_5->setContentsMargins(11, 11, 11, 11);
         gridLayout_5->setObjectName(QStringLiteral("gridLayout_5"));
+        gridLayout_3 = new QGridLayout();
+        gridLayout_3->setSpacing(6);
+        gridLayout_3->setObjectName(QStringLiteral("gridLayout_3"));
+        label_6 = new QLabel(centralWidget);
+        label_6->setObjectName(QStringLiteral("label_6"));
+
+        gridLayout_3->addWidget(label_6, 0, 0, 1, 1);
+
+        lineEdit_username = new QLineEdit(centralWidget);
+        lineEdit_username->setObjectName(QStringLiteral("lineEdit_username"));
+
+        gridLayout_3->addWidget(lineEdit_username, 0, 1, 1, 1);
+
+        pushButton_newFile = new QPushButton(centralWidget);
+        pushButton_newFile->setObjectName(QStringLiteral("pushButton_newFile"));
+        pushButton_newFile->setMinimumSize(QSize(0, 50));
+        QFont font;
+        font.setFamily(QStringLiteral("Aharoni"));
+        font.setPointSize(20);
+        font.setBold(true);
+        font.setWeight(75);
+        pushButton_newFile->setFont(font);
+
+        gridLayout_3->addWidget(pushButton_newFile, 1, 0, 1, 2);
+
+        pushButton_saveFile = new QPushButton(centralWidget);
+        pushButton_saveFile->setObjectName(QStringLiteral("pushButton_saveFile"));
+        pushButton_saveFile->setMinimumSize(QSize(0, 50));
+        pushButton_saveFile->setFont(font);
+
+        gridLayout_3->addWidget(pushButton_saveFile, 2, 0, 1, 2);
+
+
+        gridLayout_5->addLayout(gridLayout_3, 5, 1, 1, 1);
+
+        textBrowser = new QTextBrowser(centralWidget);
+        textBrowser->setObjectName(QStringLiteral("textBrowser"));
+
+        gridLayout_5->addWidget(textBrowser, 4, 1, 1, 1);
+
+        gridLayout = new QGridLayout();
+        gridLayout->setSpacing(6);
+        gridLayout->setObjectName(QStringLiteral("gridLayout"));
+        gridLayout_2 = new QGridLayout();
+        gridLayout_2->setSpacing(6);
+        gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
+        lcdNumber_back = new QLCDNumber(centralWidget);
+        lcdNumber_back->setObjectName(QStringLiteral("lcdNumber_back"));
+        lcdNumber_back->setDigitCount(3);
+
+        gridLayout_2->addWidget(lcdNumber_back, 2, 0, 1, 1);
+
+        lineEdit_lpmsPortName = new QLineEdit(centralWidget);
+        lineEdit_lpmsPortName->setObjectName(QStringLiteral("lineEdit_lpmsPortName"));
+
+        gridLayout_2->addWidget(lineEdit_lpmsPortName, 3, 0, 1, 1);
+
+
+        gridLayout->addLayout(gridLayout_2, 0, 0, 1, 2);
+
+        comboBoxIMU_left_thigh = new QComboBox(centralWidget);
+        comboBoxIMU_left_thigh->setObjectName(QStringLiteral("comboBoxIMU_left_thigh"));
+
+        gridLayout->addWidget(comboBoxIMU_left_thigh, 2, 0, 1, 1);
+
+        comboBoxIMU_right_thigh = new QComboBox(centralWidget);
+        comboBoxIMU_right_thigh->setObjectName(QStringLiteral("comboBoxIMU_right_thigh"));
+
+        gridLayout->addWidget(comboBoxIMU_right_thigh, 2, 1, 1, 1);
+
+        comboBoxIMU_left_shank = new QComboBox(centralWidget);
+        comboBoxIMU_left_shank->setObjectName(QStringLiteral("comboBoxIMU_left_shank"));
+
+        gridLayout->addWidget(comboBoxIMU_left_shank, 4, 0, 1, 1);
+
+        comboBoxIMU_right_shank = new QComboBox(centralWidget);
+        comboBoxIMU_right_shank->setObjectName(QStringLiteral("comboBoxIMU_right_shank"));
+
+        gridLayout->addWidget(comboBoxIMU_right_shank, 4, 1, 1, 1);
+
+        pushButton_deviceConnect = new QPushButton(centralWidget);
+        pushButton_deviceConnect->setObjectName(QStringLiteral("pushButton_deviceConnect"));
+
+        gridLayout->addWidget(pushButton_deviceConnect, 5, 0, 1, 2);
+
+        lcdNumber_right_shank = new QLCDNumber(centralWidget);
+        lcdNumber_right_shank->setObjectName(QStringLiteral("lcdNumber_right_shank"));
+        lcdNumber_right_shank->setDigitCount(3);
+
+        gridLayout->addWidget(lcdNumber_right_shank, 3, 1, 1, 1);
+
+        lcdNumber_left_shank = new QLCDNumber(centralWidget);
+        lcdNumber_left_shank->setObjectName(QStringLiteral("lcdNumber_left_shank"));
+        lcdNumber_left_shank->setSmallDecimalPoint(false);
+        lcdNumber_left_shank->setDigitCount(3);
+
+        gridLayout->addWidget(lcdNumber_left_shank, 3, 0, 1, 1);
+
+        lcdNumber_right_thigh = new QLCDNumber(centralWidget);
+        lcdNumber_right_thigh->setObjectName(QStringLiteral("lcdNumber_right_thigh"));
+        lcdNumber_right_thigh->setDigitCount(3);
+
+        gridLayout->addWidget(lcdNumber_right_thigh, 1, 1, 1, 1);
+
+        lcdNumber_left_thigh = new QLCDNumber(centralWidget);
+        lcdNumber_left_thigh->setObjectName(QStringLiteral("lcdNumber_left_thigh"));
+        lcdNumber_left_thigh->setDigitCount(3);
+
+        gridLayout->addWidget(lcdNumber_left_thigh, 1, 0, 1, 1);
+
+
+        gridLayout_5->addLayout(gridLayout, 1, 1, 1, 1);
+
         gridLayout_4 = new QGridLayout();
         gridLayout_4->setSpacing(6);
         gridLayout_4->setObjectName(QStringLiteral("gridLayout_4"));
@@ -168,125 +287,33 @@ public:
         gridLayout_4->addWidget(lcdNumber_right_knee, 3, 1, 1, 1);
 
 
-        gridLayout_5->addLayout(gridLayout_4, 0, 0, 3, 1);
+        gridLayout_5->addLayout(gridLayout_4, 1, 0, 5, 1);
 
-        gridLayout = new QGridLayout();
-        gridLayout->setSpacing(6);
-        gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        gridLayout_2 = new QGridLayout();
-        gridLayout_2->setSpacing(6);
-        gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
-        lcdNumber_back = new QLCDNumber(centralWidget);
-        lcdNumber_back->setObjectName(QStringLiteral("lcdNumber_back"));
-        lcdNumber_back->setDigitCount(3);
+        groupBox = new QGroupBox(centralWidget);
+        groupBox->setObjectName(QStringLiteral("groupBox"));
+        groupBox->setMinimumSize(QSize(0, 100));
+        gridLayout_6 = new QGridLayout(groupBox);
+        gridLayout_6->setSpacing(6);
+        gridLayout_6->setContentsMargins(11, 11, 11, 11);
+        gridLayout_6->setObjectName(QStringLiteral("gridLayout_6"));
+        radioButton_Leg = new QRadioButton(groupBox);
+        radioButton_Leg->setObjectName(QStringLiteral("radioButton_Leg"));
+        radioButton_Leg->setChecked(true);
 
-        gridLayout_2->addWidget(lcdNumber_back, 2, 0, 1, 1);
+        gridLayout_6->addWidget(radioButton_Leg, 0, 0, 1, 1);
 
-        lineEdit_lpmsPortName = new QLineEdit(centralWidget);
-        lineEdit_lpmsPortName->setObjectName(QStringLiteral("lineEdit_lpmsPortName"));
+        radioButton_Arm = new QRadioButton(groupBox);
+        radioButton_Arm->setObjectName(QStringLiteral("radioButton_Arm"));
 
-        gridLayout_2->addWidget(lineEdit_lpmsPortName, 3, 0, 1, 1);
-
-
-        gridLayout->addLayout(gridLayout_2, 0, 0, 1, 2);
-
-        comboBoxIMU_left_thigh = new QComboBox(centralWidget);
-        comboBoxIMU_left_thigh->setObjectName(QStringLiteral("comboBoxIMU_left_thigh"));
-
-        gridLayout->addWidget(comboBoxIMU_left_thigh, 2, 0, 1, 1);
-
-        comboBoxIMU_right_thigh = new QComboBox(centralWidget);
-        comboBoxIMU_right_thigh->setObjectName(QStringLiteral("comboBoxIMU_right_thigh"));
-
-        gridLayout->addWidget(comboBoxIMU_right_thigh, 2, 1, 1, 1);
-
-        comboBoxIMU_left_shank = new QComboBox(centralWidget);
-        comboBoxIMU_left_shank->setObjectName(QStringLiteral("comboBoxIMU_left_shank"));
-
-        gridLayout->addWidget(comboBoxIMU_left_shank, 4, 0, 1, 1);
-
-        comboBoxIMU_right_shank = new QComboBox(centralWidget);
-        comboBoxIMU_right_shank->setObjectName(QStringLiteral("comboBoxIMU_right_shank"));
-
-        gridLayout->addWidget(comboBoxIMU_right_shank, 4, 1, 1, 1);
-
-        pushButton_deviceConnect = new QPushButton(centralWidget);
-        pushButton_deviceConnect->setObjectName(QStringLiteral("pushButton_deviceConnect"));
-
-        gridLayout->addWidget(pushButton_deviceConnect, 5, 0, 1, 2);
-
-        lcdNumber_right_shank = new QLCDNumber(centralWidget);
-        lcdNumber_right_shank->setObjectName(QStringLiteral("lcdNumber_right_shank"));
-        lcdNumber_right_shank->setDigitCount(3);
-
-        gridLayout->addWidget(lcdNumber_right_shank, 3, 1, 1, 1);
-
-        lcdNumber_left_shank = new QLCDNumber(centralWidget);
-        lcdNumber_left_shank->setObjectName(QStringLiteral("lcdNumber_left_shank"));
-        lcdNumber_left_shank->setSmallDecimalPoint(false);
-        lcdNumber_left_shank->setDigitCount(3);
-
-        gridLayout->addWidget(lcdNumber_left_shank, 3, 0, 1, 1);
-
-        lcdNumber_right_thigh = new QLCDNumber(centralWidget);
-        lcdNumber_right_thigh->setObjectName(QStringLiteral("lcdNumber_right_thigh"));
-        lcdNumber_right_thigh->setDigitCount(3);
-
-        gridLayout->addWidget(lcdNumber_right_thigh, 1, 1, 1, 1);
-
-        lcdNumber_left_thigh = new QLCDNumber(centralWidget);
-        lcdNumber_left_thigh->setObjectName(QStringLiteral("lcdNumber_left_thigh"));
-        lcdNumber_left_thigh->setDigitCount(3);
-
-        gridLayout->addWidget(lcdNumber_left_thigh, 1, 0, 1, 1);
+        gridLayout_6->addWidget(radioButton_Arm, 1, 0, 1, 1);
 
 
-        gridLayout_5->addLayout(gridLayout, 0, 1, 1, 1);
-
-        textBrowser = new QTextBrowser(centralWidget);
-        textBrowser->setObjectName(QStringLiteral("textBrowser"));
-
-        gridLayout_5->addWidget(textBrowser, 1, 1, 1, 1);
-
-        gridLayout_3 = new QGridLayout();
-        gridLayout_3->setSpacing(6);
-        gridLayout_3->setObjectName(QStringLiteral("gridLayout_3"));
-        label_6 = new QLabel(centralWidget);
-        label_6->setObjectName(QStringLiteral("label_6"));
-
-        gridLayout_3->addWidget(label_6, 0, 0, 1, 1);
-
-        lineEdit_username = new QLineEdit(centralWidget);
-        lineEdit_username->setObjectName(QStringLiteral("lineEdit_username"));
-
-        gridLayout_3->addWidget(lineEdit_username, 0, 1, 1, 1);
-
-        pushButton_newFile = new QPushButton(centralWidget);
-        pushButton_newFile->setObjectName(QStringLiteral("pushButton_newFile"));
-        pushButton_newFile->setMinimumSize(QSize(0, 50));
-        QFont font;
-        font.setFamily(QStringLiteral("Aharoni"));
-        font.setPointSize(20);
-        font.setBold(true);
-        font.setWeight(75);
-        pushButton_newFile->setFont(font);
-
-        gridLayout_3->addWidget(pushButton_newFile, 1, 0, 1, 2);
-
-        pushButton_saveFile = new QPushButton(centralWidget);
-        pushButton_saveFile->setObjectName(QStringLiteral("pushButton_saveFile"));
-        pushButton_saveFile->setMinimumSize(QSize(0, 50));
-        pushButton_saveFile->setFont(font);
-
-        gridLayout_3->addWidget(pushButton_saveFile, 2, 0, 1, 2);
-
-
-        gridLayout_5->addLayout(gridLayout_3, 2, 1, 1, 1);
+        gridLayout_5->addWidget(groupBox, 2, 1, 1, 1);
 
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 720, 22));
+        menuBar->setGeometry(QRect(0, 0, 794, 22));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -303,6 +330,10 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "HumanMeasureSystem", 0));
+        label_6->setText(QApplication::translate("MainWindow", "Name", 0));
+        lineEdit_username->setText(QApplication::translate("MainWindow", "William", 0));
+        pushButton_newFile->setText(QApplication::translate("MainWindow", "NEW", 0));
+        pushButton_saveFile->setText(QApplication::translate("MainWindow", "SAVE", 0));
         lineEdit_lpmsPortName->setText(QApplication::translate("MainWindow", "00:06:66:4B:24:D2", 0));
         comboBoxIMU_left_thigh->clear();
         comboBoxIMU_left_thigh->insertItems(0, QStringList()
@@ -321,10 +352,9 @@ public:
          << QApplication::translate("MainWindow", "COM13", 0)
         );
         pushButton_deviceConnect->setText(QApplication::translate("MainWindow", "Connect", 0));
-        label_6->setText(QApplication::translate("MainWindow", "Name", 0));
-        lineEdit_username->setText(QApplication::translate("MainWindow", "William", 0));
-        pushButton_newFile->setText(QApplication::translate("MainWindow", "NEW", 0));
-        pushButton_saveFile->setText(QApplication::translate("MainWindow", "SAVE", 0));
+        groupBox->setTitle(QApplication::translate("MainWindow", "Mode", 0));
+        radioButton_Leg->setText(QApplication::translate("MainWindow", "Leg", 0));
+        radioButton_Arm->setText(QApplication::translate("MainWindow", "Arm", 0));
     } // retranslateUi
 
 };

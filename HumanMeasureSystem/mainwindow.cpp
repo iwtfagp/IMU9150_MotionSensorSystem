@@ -29,10 +29,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->comboBoxIMU_right_shank->addItems(list);
     ui->comboBoxIMU_right_thigh->addItems(list);
 
-    ui->comboBoxIMU_left_thigh->setCurrentText("COM3");
+    ui->comboBoxIMU_left_thigh->setCurrentText("COM13");
     ui->comboBoxIMU_right_thigh->setCurrentText("COM5");
-    ui->comboBoxIMU_left_shank->setCurrentText("COM7");
-    ui->comboBoxIMU_right_shank->setCurrentText("COM9");
+    ui->comboBoxIMU_left_shank->setCurrentText("COM9");
+    ui->comboBoxIMU_right_shank->setCurrentText("COM7");
 
 
     timer_ = new QTimer(this);
@@ -72,11 +72,22 @@ void MainWindow::updateView()
 
 
     enum LEG_ANGLE{left_hip, right_hip, left_knee, right_knee};
-    
-    angle_data_buffer[left_hip] = -(mpu9150_left_thigh->get_roll() - mpuLpms_back->get_roll());
-    angle_data_buffer[right_hip] = -(mpu9150_right_thigh->get_roll() - mpuLpms_back->get_roll());
-    angle_data_buffer[left_knee] = mpu9150_left_shank->get_roll() - mpu9150_left_thigh->get_roll();
-    angle_data_buffer[right_knee] = mpu9150_right_shank->get_roll() - mpu9150_right_thigh->get_roll();
+    if(ui->radioButton_Leg->isChecked())
+    {
+        angle_data_buffer[left_hip] = -(mpu9150_left_thigh->get_roll() - mpuLpms_back->get_roll());
+        angle_data_buffer[right_hip] = -(mpu9150_right_thigh->get_roll() - mpuLpms_back->get_roll());
+        angle_data_buffer[left_knee] = mpu9150_left_shank->get_roll() - mpu9150_left_thigh->get_roll();
+        angle_data_buffer[right_knee] = mpu9150_right_shank->get_roll() - mpu9150_right_thigh->get_roll();
+    }else
+    {
+        angle_data_buffer[left_hip] = mpu9150_left_thigh->get_roll();
+        angle_data_buffer[right_hip] = mpu9150_right_thigh->get_roll();
+        angle_data_buffer[left_knee] = mpu9150_left_thigh->get_yaw();
+        angle_data_buffer[right_knee] = mpu9150_right_thigh->get_yaw();
+
+    }
+
+
 
     for(int i = 0; i< 4; i++)
     {
