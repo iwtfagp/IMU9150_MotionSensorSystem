@@ -46,7 +46,6 @@ private slots:
 
     void updateView();
     void on_pushButton_deviceConnect_clicked();
-
     void on_pushButton_newFile_clicked();
     void on_pushButton_saveFile_clicked();
     void insertToTXT_Thread();
